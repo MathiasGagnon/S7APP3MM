@@ -1,0 +1,81 @@
+{
+    "type": "campaign",
+    "id": "campaign--id",
+    "spec_version": "2.1",
+    "created": "2024-03-06T20:03:00.000Z",
+    "modified": "2024-03-06T20:03:23.000Z",
+    "name": "Phishing attack by ON SAIT PAS ",
+    "description": "Campaign by ON SAIT PAS against Facebook users.",
+    "objects": [
+      {
+        "type": "attack-pattern",
+        "spec_version": "2.1",
+        "id": "attack-pattern--id",
+        "created": "2016-05-12T08:17:27.000Z",
+        "modified": "2016-05-12T08:17:27.000Z",
+        "name": "Spear Phishing",
+        "description": "..."
+      },
+      {
+        "type": "report",
+        "spec_version": "2.1",
+        "id": "report--uuid",
+        "created_by_ref": "identity--uuid",
+        "created": "2024-03-02T16:27:01Z",
+        "modified": "2024-03-02T16:27:01Z",
+        "name": "DNS Query for IP Address 200.52.42.63",
+        "description": "Analysis of DNS query for reverse lookup of IP address 200.52.42.63, indicating a possible fast flux network.",
+        "labels": [
+          "dns-query",
+          "threat-intelligence"
+        ],
+        "object_refs": [
+          "indicator--uuid",
+          "observed-data--uuid",
+          "campaign--id",
+          "course-of-action--uuid",
+          "indicator--fast-flux--uuid",
+          "relationship--dns-to-fast-flux",
+          "relationship--dns-to-campaign"
+        ]
+      },
+      {
+        "type": "relationship",
+        "spec_version": "2.1",
+        "id": "relationship--dns-to-fast-flux",
+        "created_by_ref": "identity--uuid",
+        "created": "2024-03-02T16:27:01Z",
+        "modified": "2024-03-02T16:27:01Z",
+        "relationship_type": "indicates",
+        "source_ref": "observed-data--uuid",
+        "target_ref": "indicator--fast-flux--uuid"
+      },
+      {
+        "type": "relationship",
+        "spec_version": "2.1",
+        "id": "relationship--dns-to-campaign",
+        "created_by_ref": "identity--uuid",
+        "created": "2024-03-02T16:27:01Z",
+        "modified": "2024-03-02T16:27:01Z",
+        "relationship_type": "indicates",
+        "source_ref": "observed-data--uuid",
+        "target_ref": "campaign--id"
+      },
+      {
+        "type": "indicator",
+        "spec_version": "2.1",
+        "id": "indicator--fast-flux--uuid",
+        "created_by_ref": "identity--uuid",
+        "created": "2024-03-02T16:27:01Z",
+        "modified": "2024-03-02T16:27:01Z",
+        "name": "Fast Flux Network",
+        "description": "Indicates the presence of a potential fast flux network based on the short TTL observed in DNS responses.",
+        "labels": [
+          "fast-flux",
+          "threat-intelligence"
+        ],
+        "pattern": "[network-traffic:src_ref.value = '200.52.42.63']"
+      }
+    ]
+  }
+  
