@@ -1,0 +1,2 @@
+Pour le DKIM et dns-spf, les signatures semble ok, mais on voit que ca provient de facebookmail à la place de facebookmail
+

@@ -1,81 +1,72 @@
 {
-    "type": "campaign",
-    "id": "campaign--id",
-    "spec_version": "2.1",
-    "created": "2024-03-06T20:03:00.000Z",
-    "modified": "2024-03-06T20:03:23.000Z",
-    "name": "Phishing attack by ON SAIT PAS ",
-    "description": "Campaign by ON SAIT PAS against Facebook users.",
-    "objects": [
-      {
-        "type": "attack-pattern",
-        "spec_version": "2.1",
-        "id": "attack-pattern--id",
-        "created": "2016-05-12T08:17:27.000Z",
-        "modified": "2016-05-12T08:17:27.000Z",
-        "name": "Spear Phishing",
-        "description": "..."
-      },
-      {
-        "type": "report",
-        "spec_version": "2.1",
-        "id": "report--uuid",
-        "created_by_ref": "identity--uuid",
-        "created": "2024-03-02T16:27:01Z",
-        "modified": "2024-03-02T16:27:01Z",
-        "name": "DNS Query for IP Address 200.52.42.63",
-        "description": "Analysis of DNS query for reverse lookup of IP address 200.52.42.63, indicating a possible fast flux network.",
-        "labels": [
-          "dns-query",
-          "threat-intelligence"
-        ],
-        "object_refs": [
-          "indicator--uuid",
-          "observed-data--uuid",
-          "campaign--id",
-          "course-of-action--uuid",
-          "indicator--fast-flux--uuid",
-          "relationship--dns-to-fast-flux",
-          "relationship--dns-to-campaign"
-        ]
-      },
-      {
-        "type": "relationship",
-        "spec_version": "2.1",
-        "id": "relationship--dns-to-fast-flux",
-        "created_by_ref": "identity--uuid",
-        "created": "2024-03-02T16:27:01Z",
-        "modified": "2024-03-02T16:27:01Z",
-        "relationship_type": "indicates",
-        "source_ref": "observed-data--uuid",
-        "target_ref": "indicator--fast-flux--uuid"
-      },
-      {
-        "type": "relationship",
-        "spec_version": "2.1",
-        "id": "relationship--dns-to-campaign",
-        "created_by_ref": "identity--uuid",
-        "created": "2024-03-02T16:27:01Z",
-        "modified": "2024-03-02T16:27:01Z",
-        "relationship_type": "indicates",
-        "source_ref": "observed-data--uuid",
-        "target_ref": "campaign--id"
-      },
-      {
-        "type": "indicator",
-        "spec_version": "2.1",
-        "id": "indicator--fast-flux--uuid",
-        "created_by_ref": "identity--uuid",
-        "created": "2024-03-02T16:27:01Z",
-        "modified": "2024-03-02T16:27:01Z",
-        "name": "Fast Flux Network",
-        "description": "Indicates the presence of a potential fast flux network based on the short TTL observed in DNS responses.",
-        "labels": [
-          "fast-flux",
-          "threat-intelligence"
-        ],
-        "pattern": "[network-traffic:src_ref.value = '200.52.42.63']"
-      }
-    ]
-  }
-  
+  "type": "bundle",
+  "id": "bundle--uuid",
+  "spec_version": "2.1",
+  "objects": [
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "Phishing Attack Analysis: Suspicious Email from Facebookmail",
+      "description": "Analysis of a spear phishing attack targeting Facebook users. The attack involves suspicious email activity originating from the domain 'facebookmail'. The email contained links possibly leading to a malicious website exploiting CVE-2012-1723.",
+      "labels": [
+        "phishing",
+        "threat-intelligence"
+      ],
+      "object_refs": [
+        "indicator--dns-spf-dkim-facebookmail--uuid",
+        "indicator--fast-flux--uuid",
+        "indicator--firefox-plugin--uuid",
+        "campaign--id",
+        "course-of-action--uuid",
+        "relationship--dns-to-fast-flux",
+        "relationship--dns-to-campaign",
+        "relationship--email-to-plugin"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--dns-spf-dkim-facebookmail--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "Suspicious Email Origin: facebookmail",
+      "description": "Indicates the suspicious origin of an email from 'facebookmail', suggesting potential phishing activity. DNS SPF and DKIM records suggest the email is fraudulent.",
+      "labels": [
+        "email-spoofing",
+        "threat-intelligence"
+      ],
+      "pattern": "[email-message:from_ref.value = 'facebookmail']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--firefox-plugin--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "Potential Exploited Firefox Plugin: Java(TM) Plug-in 1.7.0_04",
+      "description": "Indicates the potential exploitation of the Java(TM) Plug-in 1.7.0_04 Firefox plugin, which is associated with CVE-2012-1723.",
+      "labels": [
+        "exploited-plugin",
+        "threat-intelligence"
+      ],
+      "pattern": "[file:hashes.'SHA-256' = 'CVE-2012-1723']"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--email-to-plugin",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
+      "target_ref": "indicator--firefox-plugin--uuid"
+    }
+  ]
+}

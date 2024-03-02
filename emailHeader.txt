@@ -1,0 +1,36 @@
+From - Ned 
+Jan 30 08:59:58 2013 
+X-Account-Key: accountl 
+X-UIDL: GmailIdl3c4124051e8d8a0 
+X-Mozilla-Status: 0001 
+X-Mozilla-Status2: 00000000 
+X-Mozilla-Keys: 
+
+Delivered-To: jules.sepas@gmail.com 
+Received: by 10.64.128.9 with SMTP id nk9csp112772ieb; Tue, 15 Jan 2013 18:15:45 -0800 (PST) 
+X-Received: by 10.66.78.168 with SMTP id c8mr247601513pax.16.1358302544942; Tue, 15 Jan 2013 18:15:44 -0800 (PST) 
+
+Return-Path: <update+kr4yanaw52bx@facebookmail.com> 
+Received: from mx-out.facebook.com (200-52-42-63.dynamic.axtel.net [200.52.42.631) 
+by mx.google.com with ESMTP id d3si20056094paw.12.2013.01.15.18.15.44; Tue, 15 Jan 2013 18:15:44 -0800 (PST) 
+Received-SPF: pass (google.com: domain of update+kr4yanaw52bx@facebookmail.com designates 200.52.42.63 as permitted sender) client-ip.200.52.42.63; 
+Authentication-Results: mx.google.com; 
+spf=pass (google.com: domain of update+kr4yanaw52bx@facebookmail.com designates 200.52.42.63 as permitted sender) smtp.mail=update+krayanaw526x@facebookmail com; 
+dkimFpass header.i=@facebookmail.com 
+
+Return-Path: <update+kr4yanaw52bx@facebookmail.com> 
+DKIM-Signature: v=1; a=rsa-sha256; d=facebookmail.com; s=s1024-2011-q2; c=relaxed/simple; q=dns/txt; i=@facebookmail.com; t=1358302544; h=From:Subject:Date:To:MIME-Version:Content-Type; bh=bsNvrEIKNgC80c7nyje2P33VNwOjXv/8RM8M0I5xqJsg; b=sMDAF7wC4nOUROAGg39I8k6k7bghD67UTSK+pbIDcMoFOOBrerAeAAj/lTnKOzRd lheml_vuUc9q53f8h/diG7Jlfa2bvkk4TJgFZjLAHI/rHEsSZJ7uH9xiYvVLWPFZ 11:10qd8lMsmSbhDjIcPaYa6V/AncqzEs8xm8oiM+jr8=; 
+
+Received: from [10.62.52.44] ([10.62.52.44:593061) 
+by smout067.snc7.facebook.com (envelope-from ‹update+krayanaw526x@facebookmail.com ) (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 80/99-15713-05D06F05; 
+Tue, 15 Jan 2013 18:15:44 -0800 
+X-Facebook: from zuckmail ([MTI3LjAuMC4x]) 
+by www.facebook.com with HTTP (ZuckMail); 
+Date: Tue, 15 Jan 2013 18:15:44 -0800 
+To: =?UTF-8?8?SnVsZXMO.180pcGFz?= <jules.sepas@gmail.com> 
+From: "Facebook" <update+kr4yanaw52bx@facebookmail.com> 
+Reply-to: noreply <noreply@facebookmail.com> 
+Subject: New login system - update your account now' 
+Message-ID: <43c4debbd63bf9ccd9548592ee5bfdfc@www.facebook.com> 
+X-Priority: 3 
+X-Mailer: ZuckMail [version 1.001 Errors-To: update+kr4yanaw52bx@facebookmail.com X-Facebook-Notify: account_email; mailid=76000765af43df3061600046 K-Facebook-Unconfirmed: 1 X-FACEBOOK-PRIORITY: 1 X-Auto-Response-Suppress: All MIME-Version: 1.0
