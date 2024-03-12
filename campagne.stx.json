@@ -15,26 +15,110 @@
        "labels": [
          "phishing",
          "threat-intelligence"
-       ],
-       "object_refs": [
-         "indicator--dns-spf-dkim-facebookmail--uuid",
-         "indicator--fast-flux--uuid",
-         "indicator--firefox-plugin--uuid",
-         "indicator--malicious-link--uuid",
-         "campaign--id",
-         "course-of-action--uuid",
-         "relationship--dns-to-fast-flux",
-         "relationship--dns-to-campaign",
-         "relationship--email-to-plugin",
-         "relationship--malicious-link-to-plugin",
-         "malware--b34st-rootkit--uuid",
-         "malware--perle-script--uuid",
-         "relationship--plugin-to-rootkit",
-         "relationship--rootkit-to-botnet",
-         "relationship--botnet-to-perle-script",
-         "relationship--rootkit-to-botnet-script"
        ]
      },
+     {
+      "type": "identity",
+      "id": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a921",
+      "created": "2024-03-12T00:00:00Z",
+      "modified": "2024-03-12T00:00:00Z",
+      "name": "Unknown",
+      "identity_class": "individual",
+      "sectors": [
+          "Individuals"
+      ],
+      "roles": [
+          "hacker",
+          "threat-actor"
+      ],
+      "goals": [
+          "Data theft",
+          "Disruption of services"
+      ],
+      "aliases": [
+          "MalActA",
+          "EvilHacker123"
+      ],
+      "description": "Unknown  individual known for phishing and botnet operations",
+      "external_references": [
+          {
+              "source_name": "MITRE",
+              "external_id": "T1001"
+          }
+      ]
+  },
+  {
+    "type": "identity",
+    "id": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922",
+    "created": "2024-03-12T00:00:00Z",
+    "modified": "2024-03-12T00:00:00Z",
+    "name": "UdS GI Students",
+    "identity_class": "individual",
+    "sectors": [
+        "Individuals"
+    ],
+    "roles": [
+        "Students"
+    ],
+    "aliases": [
+        "gagm1105",
+        "lefm1509"
+    ],
+    "description": "Students doing course gei762"
+},
+  {
+    "type": "attack-pattern",
+    "spec_version": "2.1",
+    "id": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5",
+    "created": "2015-05-07T14:22:14.760Z",
+    "modified": "2015-05-07T14:22:14.760Z",
+    "name": "Phishing",
+    "description": "Spear phishing used as a delivery mechanism for malware.",
+    "kill_chain_phases": [
+        {
+            "kill_chain_name": "mandiant-attack-lifecycle-model",
+            "phase_name": "initial-compromise"
+        }
+    ],
+    "external_references": [
+        {
+            "source_name": "capec",
+            "description": "phishing",
+            "url": "https://capec.mitre.org/data/definitions/98.html",
+            "external_id": "CAPEC-98"
+        }
+    ]
+  },
+  
+     {
+      "type": "threat-actor",
+      "id": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+      "created": "2024-03-12T00:00:00Z",
+      "modified": "2024-03-12T00:00:00Z",
+      "name": "Malicious Actor A",
+      "labels": ["malicious-actor"],
+      "description": "Malicious Actor A is known for conducting email spam and phising to create zombie machines for a bot net (Mettre mieux)",
+      "goals": ["Data theft", "Disruption of services"],
+      "threat_actor_types": ["hacker", "criminal"],
+      "first_seen": "A completer",
+      "last_seen": "A completer"
+    },
+  
+     {
+      "type": "vulnerability",
+      "id": "vulnerability--ee8765b7-17ea-4854-946d-c9c3e16bfc91",
+      "created": "2024-03-12T00:00:00Z",
+      "modified": "2024-03-12T00:00:00Z",
+      "name": "CVE-2012-1723",
+      "description": "The Java plugin implementation in certain versions of Java Runtime Environment (JRE) allows remote attackers to execute arbitrary code via unknown vectors related to 'insufficient checks on applets loaded from network resources' aka 'Java Runtime Environment Signed Applet Security Bypass Vulnerability'.",
+      "external_references": [
+          {
+              "source_name": "CVE",
+              "external_id": "CVE-2012-1723"
+          }
+      ]
+    },
+  
      {
        "type": "indicator",
        "spec_version": "2.1",
@@ -115,14 +199,25 @@
      {
        "type": "relationship",
        "spec_version": "2.1",
-       "id": "relationship--plugin-to-rootkit",
+       "id": "relationship--plugin-to-vulnerability",
        "created_by_ref": "identity--uuid",
        "created": "2024-03-02T16:27:01Z",
        "modified": "2024-03-02T16:27:01Z",
-       "relationship_type": "uses",
+       "relationship_type": "has",
        "source_ref": "indicator--firefox-plugin--uuid",
-       "target_ref": "malware--b34st-rootkit--uuid"
+       "target_ref": "vulnerability--ee8765b7-17ea-4854-946d-c9c3e16bfc91"
      },
+     {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--plugin-to-rootkit",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "downloads",
+      "source_ref": "indicator--firefox-plugin--uuid",
+      "target_ref": "malware--b34st-rootkit--uuid"
+    },
      {
        "type": "relationship",
        "spec_version": "2.1",
@@ -166,6 +261,68 @@
       "relationship_type": "contains",
       "source_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
       "target_ref": "indicator--malicious-link--uuid"
-    }
+    },
+    {
+     "type": "relationship",
+     "spec_version": "2.1",
+     "id": "relationship--theat-actor-attributed-to-identity",
+     "created_by_ref": "identity--uuid",
+     "created": "2024-03-02T16:27:01Z",
+     "modified": "2024-03-02T16:27:01Z",
+     "relationship_type": "Attributed To",
+     "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+     "target_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a921"
+   },
+   {
+    "type": "relationship",
+    "spec_version": "2.1",
+    "id": "relationship--students-saw-email-indicator",
+    "created_by_ref": "identity--uuid",
+    "created": "2024-03-02T16:27:01Z",
+    "modified": "2024-03-02T16:27:01Z",
+    "relationship_type": "Saw",
+    "source_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
+    "target_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922"
+  },  
+{
+    "type": "relationship",
+    "spec_version": "2.1",
+    "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997f",
+    "created": "2020-02-29T18:18:08.661Z",
+    "modified": "2020-02-29T18:18:08.661Z",
+    "relationship_type": "uses",
+    "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+    "target_ref": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5"
+},
+{
+  "type": "relationship",
+  "spec_version": "2.1",
+  "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997z",
+  "created": "2020-02-29T18:18:08.661Z",
+  "modified": "2020-02-29T18:18:08.661Z",
+  "relationship_type": "uses",
+  "source_ref": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5",
+  "target_ref": "indicator--dns-spf-dkim-facebookmail--uuid"
+},
+{
+  "type": "relationship",
+  "spec_version": "2.1",
+  "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997g",
+  "created": "2020-02-29T18:18:08.661Z",
+  "modified": "2020-02-29T18:18:08.661Z",
+  "relationship_type": "uses",
+  "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+  "target_ref": "malware--b34st-rootkit--uuid"
+},
+{
+  "type": "relationship",
+  "spec_version": "2.1",
+  "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997h",
+  "created": "2020-02-29T18:18:08.661Z",
+  "modified": "2020-02-29T18:18:08.661Z",
+  "relationship_type": "uses",
+  "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+  "target_ref": "infrastructure--botnet--uuid"
+}
   ]
 }
