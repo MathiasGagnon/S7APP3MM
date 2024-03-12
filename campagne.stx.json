@@ -162,7 +162,7 @@
       "type": "infrastructure",
       "name": "Herder",
       "id": "infrastructure--herder--uuid",
-      "description": "Serveur controlant les zombies botnet"
+      "description": "ICMP Server controlling Botnet zombie"
     },
     {
       "type": "relationship",
