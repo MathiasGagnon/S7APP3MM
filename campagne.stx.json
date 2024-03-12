@@ -106,10 +106,23 @@
       "created": "2024-03-02T16:27:01Z",
       "modified": "2024-03-02T16:27:01Z",
       "name": "Suspicious Email Origin: facebookmail",
-      "description": "Indicates the suspicious origin of an email from 'facebookmail', suggesting potential phishing activity. DNS SPF and DKIM records suggest the email is fraudulent.",
+      "description": "Indicates the suspicious origin of an email from 'facebookmail', suggesting potential phishing activity. The email passes SPF, DKIM, and DMARC checks, indicating it is authenticated but originates from a domain known to be suspicious. The DNS information from the sender's IP address shows a short TTL, suggesting the use of fast flux DNS, and the sender's domain is associated with ns-mty.axtel.net and soporteip.extel.com.mx, which are suspicious from Facebook's perspective.",
       "labels": ["email-spoofing", "threat-intelligence"],
-      "pattern": "[email-message:from_ref.value = 'facebookmail']"
-    },
+      "pattern": "[email-message:from_ref.value = 'facebookmail']",
+      "external_references": [
+         {
+           "source_name": "DNS Analysis",
+           "url": "https://github.com/MathiasGagnon/S7APP3MM/blob/main/DigIPEnvoyeur.PNG",
+           "description": "Details about the DNS analysis of the sender's IP address (200.52.42.53), showing a short TTL indicating a fast flux DNS and association with suspicious domains (axtel)."
+         },
+         {
+           "source_name": "SPF, DKIM, DMARC Analysis",
+           "url": "https://github.com/MathiasGagnon/S7APP3MM/blob/main/emailHeader.txt",
+           "description": "Analysis of the SPF, DKIM, and DMARC entries for the email, indicating successful authentication checks."
+         }
+      ]
+     },
+     
     {
       "type": "indicator",
       "spec_version": "2.1",
@@ -136,15 +149,31 @@
     },
     {
       "type": "malware",
-      "spec_version": "2.1",
       "id": "infrastructure--botnet--uuid",
-      "created_by_ref": "identity--uuid",
       "created": "2024-03-02T16:27:01Z",
       "modified": "2024-03-02T16:27:01Z",
-      "name": "Perl Script for Botnet Propagation",
-      "description": "Perl script used by the bot herder to propagate the botnet. It spreads the virus by sending emails to other machines.",
-      "labels": ["botnet-propagation", "malware", "script"]
-    },
+      "name": "Malware Botnet",
+      "description": "A malware botnet that connects to a command and control server for command execution and control.",
+      "malware_types": ["botnet"]
+     },
+     {
+      "type": "network-traffic",
+      "id": "network-traffic--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "description": "Network traffic associated with the malware botnet connecting to its command and control server.",
+      "protocols": ["tcp"],
+      "dst_port": 6565,
+      "dst_ref": "ipv4-addr--83.192.53.201",
+      "extensions": {
+         "network-traffic-ext": {
+           "dst_socket_address": {
+             "address_value": "83.192.53.201",
+             "port_value": 6565
+           }
+         }
+      }
+     },
     {
       "type": "indicator",
       "spec_version": "2.1",
@@ -164,6 +193,26 @@
       "id": "infrastructure--herder--uuid",
       "description": "ICMP Server controlling Botnet zombie"
     },
+    {
+      "type": "relationship",
+      "id": "relationship--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "uses",
+      "source_ref": "infrastructure--botnet--uuid",
+      "target_ref": "network-traffic--uuid",
+      "description": "The malware botnet uses the specified network traffic to connect to its command and control server."
+     },
+     {
+      "type": "relationship",
+      "id": "relationship--uuid--botnet--email",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "sends",
+      "source_ref": "infrastructure--botnet--uuid",
+      "target_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
+      "description": "The malware botnet sends malicious emails to further expand the botnet."
+     },
     {
       "type": "relationship",
       "spec_version": "2.1",

