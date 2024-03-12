@@ -3,94 +3,73 @@
   "id": "bundle--uuid",
   "spec_version": "2.1",
   "objects": [
-     {
-       "type": "report",
-       "spec_version": "2.1",
-       "id": "report--uuid",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "name": "Phishing Attack Analysis: Suspicious Email from Facebookmail",
-       "description": "Analysis of a spear phishing attack targeting Facebook users. The attack involves suspicious email activity originating from the domain 'facebookmail'. The email contained links possibly leading to a malicious website exploiting CVE-2012-1723.",
-       "labels": [
-         "phishing",
-         "threat-intelligence"
-       ]
-     },
-     {
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "Phishing Attack Analysis: Suspicious Email from Facebookmail",
+      "description": "Analysis of a spear phishing attack targeting Facebook users. The attack involves suspicious email activity originating from the domain 'facebookmail'. The email contained links possibly leading to a malicious website exploiting CVE-2012-1723.",
+      "labels": ["phishing", "threat-intelligence"]
+    },
+    {
       "type": "identity",
       "id": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a921",
       "created": "2024-03-12T00:00:00Z",
       "modified": "2024-03-12T00:00:00Z",
       "name": "Unknown",
       "identity_class": "individual",
-      "sectors": [
-          "Individuals"
-      ],
-      "roles": [
-          "hacker",
-          "threat-actor"
-      ],
-      "goals": [
-          "Data theft",
-          "Disruption of services"
-      ],
-      "aliases": [
-          "MalActA",
-          "EvilHacker123"
-      ],
+      "sectors": ["Individuals"],
+      "roles": ["hacker", "threat-actor"],
+      "goals": ["Data theft", "Disruption of services"],
+      "aliases": ["MalActA", "EvilHacker123"],
       "description": "Unknown  individual known for phishing and botnet operations",
       "external_references": [
-          {
-              "source_name": "MITRE",
-              "external_id": "T1001"
-          }
+        {
+          "source_name": "MITRE",
+          "external_id": "T1001"
+        }
       ]
-  },
-  {
-    "type": "identity",
-    "id": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922",
-    "created": "2024-03-12T00:00:00Z",
-    "modified": "2024-03-12T00:00:00Z",
-    "name": "UdS GI Students",
-    "identity_class": "individual",
-    "sectors": [
-        "Individuals"
-    ],
-    "roles": [
-        "Students"
-    ],
-    "aliases": [
-        "gagm1105",
-        "lefm1509"
-    ],
-    "description": "Students doing course gei762"
-},
-  {
-    "type": "attack-pattern",
-    "spec_version": "2.1",
-    "id": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5",
-    "created": "2015-05-07T14:22:14.760Z",
-    "modified": "2015-05-07T14:22:14.760Z",
-    "name": "Phishing",
-    "description": "Spear phishing used as a delivery mechanism for malware.",
-    "kill_chain_phases": [
+    },
+    {
+      "type": "identity",
+      "id": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922",
+      "created": "2024-03-12T00:00:00Z",
+      "modified": "2024-03-12T00:00:00Z",
+      "name": "UdS GI Students",
+      "identity_class": "individual",
+      "sectors": ["Individuals"],
+      "roles": ["Students"],
+      "aliases": ["gagm1105", "lefm1509"],
+      "description": "Students doing course gei762"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5",
+      "created": "2015-05-07T14:22:14.760Z",
+      "modified": "2015-05-07T14:22:14.760Z",
+      "name": "Phishing",
+      "description": "Spear phishing used as a delivery mechanism for malware.",
+      "kill_chain_phases": [
         {
-            "kill_chain_name": "mandiant-attack-lifecycle-model",
-            "phase_name": "initial-compromise"
+          "kill_chain_name": "mandiant-attack-lifecycle-model",
+          "phase_name": "initial-compromise"
         }
-    ],
-    "external_references": [
+      ],
+      "external_references": [
         {
-            "source_name": "capec",
-            "description": "phishing",
-            "url": "https://capec.mitre.org/data/definitions/98.html",
-            "external_id": "CAPEC-98"
+          "source_name": "capec",
+          "description": "phishing",
+          "url": "https://capec.mitre.org/data/definitions/98.html",
+          "external_id": "CAPEC-98"
         }
-    ]
-  },
-  
-     {
+      ]
+    },
+
+    {
       "type": "threat-actor",
       "id": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
       "created": "2024-03-12T00:00:00Z",
@@ -103,8 +82,8 @@
       "first_seen": "A completer",
       "last_seen": "A completer"
     },
-  
-     {
+
+    {
       "type": "vulnerability",
       "id": "vulnerability--ee8765b7-17ea-4854-946d-c9c3e16bfc91",
       "created": "2024-03-12T00:00:00Z",
@@ -112,76 +91,61 @@
       "name": "CVE-2012-1723",
       "description": "The Java plugin implementation in certain versions of Java Runtime Environment (JRE) allows remote attackers to execute arbitrary code via unknown vectors related to 'insufficient checks on applets loaded from network resources' aka 'Java Runtime Environment Signed Applet Security Bypass Vulnerability'.",
       "external_references": [
-          {
-              "source_name": "CVE",
-              "external_id": "CVE-2012-1723"
-          }
+        {
+          "source_name": "CVE",
+          "external_id": "CVE-2012-1723"
+        }
       ]
     },
-  
-     {
-       "type": "indicator",
-       "spec_version": "2.1",
-       "id": "indicator--dns-spf-dkim-facebookmail--uuid",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "name": "Suspicious Email Origin: facebookmail",
-       "description": "Indicates the suspicious origin of an email from 'facebookmail', suggesting potential phishing activity. DNS SPF and DKIM records suggest the email is fraudulent.",
-       "labels": [
-         "email-spoofing",
-         "threat-intelligence"
-       ],
-       "pattern": "[email-message:from_ref.value = 'facebookmail']"
-     },
-     {
-       "type": "indicator",
-       "spec_version": "2.1",
-       "id": "indicator--firefox-plugin--uuid",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "name": "Potential Exploited Firefox Plugin: Java(TM) Plug-in 1.7.0_04",
-       "description": "Indicates the potential exploitation of the Java(TM) Plug-in 1.7.0_04 Firefox plugin, which is associated with CVE-2012-1723.",
-       "labels": [
-         "exploited-plugin",
-         "threat-intelligence"
-       ],
-       "pattern": "[file:hashes.'SHA-256' = 'CVE-2012-1723']"
-     },
-     {
-       "type": "malware",
-       "spec_version": "2.1",
-       "id": "malware--b34st-rootkit--uuid",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "name": "B34ST Rookit V1",
-       "description": "Rootkit malware installed via the exploited Firefox Java plugin vulnerability.",
-       "labels": [
-         "rootkit",
-         "malware"
-       ],
-       "malware_types": [
-         "rootkit"
-       ]
-     },
-     {
-       "type": "malware",
-       "spec_version": "2.1",
-       "id": "infrastructure--botnet--uuid",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "name": "Perl Script for Botnet Propagation",
-       "description": "Perl script used by the bot herder to propagate the botnet. It spreads the virus by sending emails to other machines.",
-       "labels": [
-         "botnet-propagation",
-         "malware",
-         "script"
-       ]
-     },
-     {
+
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--dns-spf-dkim-facebookmail--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "Suspicious Email Origin: facebookmail",
+      "description": "Indicates the suspicious origin of an email from 'facebookmail', suggesting potential phishing activity. DNS SPF and DKIM records suggest the email is fraudulent.",
+      "labels": ["email-spoofing", "threat-intelligence"],
+      "pattern": "[email-message:from_ref.value = 'facebookmail']"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--firefox-plugin--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "Potential Exploited Firefox Plugin: Java(TM) Plug-in 1.7.0_04",
+      "description": "Indicates the potential exploitation of the Java(TM) Plug-in 1.7.0_04 Firefox plugin, which is associated with CVE-2012-1723.",
+      "labels": ["exploited-plugin", "threat-intelligence"],
+      "pattern": "[file:hashes.'SHA-256' = 'CVE-2012-1723']"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--b34st-rootkit--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "B34ST Rookit V1",
+      "description": "Rootkit malware installed via the exploited Firefox Java plugin vulnerability.",
+      "labels": ["rootkit", "malware"],
+      "malware_types": ["rootkit"]
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "infrastructure--botnet--uuid",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "name": "Perl Script for Botnet Propagation",
+      "description": "Perl script used by the bot herder to propagate the botnet. It spreads the virus by sending emails to other machines.",
+      "labels": ["botnet-propagation", "malware", "script"]
+    },
+    {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--malicious-link--uuid",
@@ -190,24 +154,39 @@
       "modified": "2024-03-02T16:27:01Z",
       "name": "Malicious Link: http://www.facebook.con",
       "description": "Indicates a suspicious link found in the phishing email, potentially leading to a malicious website.",
-      "labels": [
-        "phishing",
-        "suspicious-link"
-      ],
+      "labels": ["phishing", "suspicious-link"],
       "pattern": "[url:value = 'http://www.facebook.con']"
-     },
-     {
-       "type": "relationship",
-       "spec_version": "2.1",
-       "id": "relationship--plugin-to-vulnerability",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "relationship_type": "has",
-       "source_ref": "indicator--firefox-plugin--uuid",
-       "target_ref": "vulnerability--ee8765b7-17ea-4854-946d-c9c3e16bfc91"
-     },
-     {
+    },
+
+    {
+      "type": "infrastructure",
+      "name": "Herder",
+      "id": "infrastructure--herder--uuid",
+      "description": "Serveur controlant les zombies botnet"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--botnet-to-herder",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "Control",
+      "source_ref": "infrastructure--herder--uuid",
+      "target_ref": "infrastructure--botnet--uuid"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--plugin-to-vulnerability",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "has",
+      "source_ref": "indicator--firefox-plugin--uuid",
+      "target_ref": "vulnerability--ee8765b7-17ea-4854-946d-c9c3e16bfc91"
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--plugin-to-rootkit",
@@ -218,40 +197,40 @@
       "source_ref": "indicator--firefox-plugin--uuid",
       "target_ref": "malware--b34st-rootkit--uuid"
     },
-     {
-       "type": "relationship",
-       "spec_version": "2.1",
-       "id": "relationship--rootkit-to-botnet",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "relationship_type": "downloads",
-       "source_ref": "malware--b34st-rootkit--uuid",
-       "target_ref": "infrastructure--botnet--uuid"
-     },
-     {
-       "type": "relationship",
-       "spec_version": "2.1",
-       "id": "relationship--malicious-link-to-plugin",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "relationship_type": "downloads",
-       "source_ref": "indicator--malicious-link--uuid",
-       "target_ref": "indicator--firefox-plugin--uuid"
-     },
-     {
-       "type": "relationship",
-       "spec_version": "2.1",
-       "id": "relationship--botnet-to-perle-script",
-       "created_by_ref": "identity--uuid",
-       "created": "2024-03-02T16:27:01Z",
-       "modified": "2024-03-02T16:27:01Z",
-       "relationship_type": "downloads",
-       "source_ref": "infrastructure--botnet--uuid",
-       "target_ref": "malware--perle-script--uuid"
-     },
-     {
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--rootkit-to-botnet",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "downloads",
+      "source_ref": "malware--b34st-rootkit--uuid",
+      "target_ref": "infrastructure--botnet--uuid"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--malicious-link-to-plugin",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "downloads",
+      "source_ref": "indicator--malicious-link--uuid",
+      "target_ref": "indicator--firefox-plugin--uuid"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--botnet-to-perle-script",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "downloads",
+      "source_ref": "infrastructure--botnet--uuid",
+      "target_ref": "malware--perle-script--uuid"
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--email-contains-link",
@@ -263,66 +242,67 @@
       "target_ref": "indicator--malicious-link--uuid"
     },
     {
-     "type": "relationship",
-     "spec_version": "2.1",
-     "id": "relationship--theat-actor-attributed-to-identity",
-     "created_by_ref": "identity--uuid",
-     "created": "2024-03-02T16:27:01Z",
-     "modified": "2024-03-02T16:27:01Z",
-     "relationship_type": "Attributed To",
-     "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
-     "target_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a921"
-   },
-   {
-    "type": "relationship",
-    "spec_version": "2.1",
-    "id": "relationship--students-saw-email-indicator",
-    "created_by_ref": "identity--uuid",
-    "created": "2024-03-02T16:27:01Z",
-    "modified": "2024-03-02T16:27:01Z",
-    "relationship_type": "Saw",
-    "source_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
-    "target_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922"
-  },  
-{
-    "type": "relationship",
-    "spec_version": "2.1",
-    "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997f",
-    "created": "2020-02-29T18:18:08.661Z",
-    "modified": "2020-02-29T18:18:08.661Z",
-    "relationship_type": "uses",
-    "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
-    "target_ref": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5"
-},
-{
-  "type": "relationship",
-  "spec_version": "2.1",
-  "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997z",
-  "created": "2020-02-29T18:18:08.661Z",
-  "modified": "2020-02-29T18:18:08.661Z",
-  "relationship_type": "uses",
-  "source_ref": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5",
-  "target_ref": "indicator--dns-spf-dkim-facebookmail--uuid"
-},
-{
-  "type": "relationship",
-  "spec_version": "2.1",
-  "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997g",
-  "created": "2020-02-29T18:18:08.661Z",
-  "modified": "2020-02-29T18:18:08.661Z",
-  "relationship_type": "uses",
-  "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
-  "target_ref": "malware--b34st-rootkit--uuid"
-},
-{
-  "type": "relationship",
-  "spec_version": "2.1",
-  "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997h",
-  "created": "2020-02-29T18:18:08.661Z",
-  "modified": "2020-02-29T18:18:08.661Z",
-  "relationship_type": "uses",
-  "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
-  "target_ref": "infrastructure--botnet--uuid"
-}
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--theat-actor-attributed-to-identity",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "Attributed To",
+      "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+      "target_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a921"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--students-saw-email-indicator",
+      "created_by_ref": "identity--uuid",
+      "created": "2024-03-02T16:27:01Z",
+      "modified": "2024-03-02T16:27:01Z",
+      "relationship_type": "Saw",
+      "source_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
+      "target_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997f",
+      "created": "2020-02-29T18:18:08.661Z",
+      "modified": "2020-02-29T18:18:08.661Z",
+      "relationship_type": "uses",
+      "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+      "target_ref": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997z",
+      "created": "2020-02-29T18:18:08.661Z",
+      "modified": "2020-02-29T18:18:08.661Z",
+      "relationship_type": "uses",
+      "source_ref": "attack-pattern--8ac90ff3-ecf8-4835-95b8-6aea6a623df5",
+      "target_ref": "indicator--dns-spf-dkim-facebookmail--uuid"
+    },
+
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3cd2d6f9-0ded-486b-8dca-606283a8997h",
+      "created": "2020-02-29T18:18:08.661Z",
+      "modified": "2020-02-29T18:18:08.661Z",
+      "relationship_type": "uses",
+      "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
+      "target_ref": "infrastructure--herder--uuid"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--student-herder",
+      "created": "2020-02-29T18:18:08.661Z",
+      "modified": "2020-02-29T18:18:08.661Z",
+      "relationship_type": "Brute Force SSH root:12345/Gain access",
+      "source_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922",
+      "target_ref": "infrastructure--herder--uuid"
+    }
   ]
 }
