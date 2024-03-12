@@ -3,70 +3,113 @@
   "id": "bundle--uuid",
   "spec_version": "2.1",
   "objects": [
-    {
-      "type": "report",
-      "spec_version": "2.1",
-      "id": "report--uuid",
-      "created_by_ref": "identity--uuid",
-      "created": "2024-03-02T16:27:01Z",
-      "modified": "2024-03-02T16:27:01Z",
-      "name": "Phishing Attack Analysis: Suspicious Email from Facebookmail",
-      "description": "Analysis of a spear phishing attack targeting Facebook users. The attack involves suspicious email activity originating from the domain 'facebookmail'. The email contained links possibly leading to a malicious website exploiting CVE-2012-1723.",
-      "labels": [
-        "phishing",
-        "threat-intelligence"
-      ],
-      "object_refs": [
-        "indicator--dns-spf-dkim-facebookmail--uuid",
-        "indicator--fast-flux--uuid",
-        "indicator--firefox-plugin--uuid",
-        "campaign--id",
-        "course-of-action--uuid",
-        "relationship--dns-to-fast-flux",
-        "relationship--dns-to-campaign",
-        "relationship--email-to-plugin"
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--dns-spf-dkim-facebookmail--uuid",
-      "created_by_ref": "identity--uuid",
-      "created": "2024-03-02T16:27:01Z",
-      "modified": "2024-03-02T16:27:01Z",
-      "name": "Suspicious Email Origin: facebookmail",
-      "description": "Indicates the suspicious origin of an email from 'facebookmail', suggesting potential phishing activity. DNS SPF and DKIM records suggest the email is fraudulent.",
-      "labels": [
-        "email-spoofing",
-        "threat-intelligence"
-      ],
-      "pattern": "[email-message:from_ref.value = 'facebookmail']"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--firefox-plugin--uuid",
-      "created_by_ref": "identity--uuid",
-      "created": "2024-03-02T16:27:01Z",
-      "modified": "2024-03-02T16:27:01Z",
-      "name": "Potential Exploited Firefox Plugin: Java(TM) Plug-in 1.7.0_04",
-      "description": "Indicates the potential exploitation of the Java(TM) Plug-in 1.7.0_04 Firefox plugin, which is associated with CVE-2012-1723.",
-      "labels": [
-        "exploited-plugin",
-        "threat-intelligence"
-      ],
-      "pattern": "[file:hashes.'SHA-256' = 'CVE-2012-1723']"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--email-to-plugin",
-      "created_by_ref": "identity--uuid",
-      "created": "2024-03-02T16:27:01Z",
-      "modified": "2024-03-02T16:27:01Z",
-      "relationship_type": "indicates",
-      "source_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
-      "target_ref": "indicator--firefox-plugin--uuid"
-    }
+     {
+       "type": "report",
+       "spec_version": "2.1",
+       "id": "report--uuid",
+       "created_by_ref": "identity--uuid",
+       "created": "2024-03-02T16:27:01Z",
+       "modified": "2024-03-02T16:27:01Z",
+       "name": "Phishing Attack Analysis: Suspicious Email from Facebookmail",
+       "description": "Analysis of a spear phishing attack targeting Facebook users. The attack involves suspicious email activity originating from the domain 'facebookmail'. The email contained links possibly leading to a malicious website exploiting CVE-2012-1723.",
+       "labels": [
+         "phishing",
+         "threat-intelligence"
+       ],
+       "object_refs": [
+         "indicator--dns-spf-dkim-facebookmail--uuid",
+         "indicator--fast-flux--uuid",
+         "indicator--firefox-plugin--uuid",
+         "campaign--id",
+         "course-of-action--uuid",
+         "relationship--dns-to-fast-flux",
+         "relationship--dns-to-campaign",
+         "relationship--email-to-plugin",
+         "malware--b34st-rootkit--uuid",
+         "relationship--plugin-to-rootkit",
+         "relationship--rootkit-to-botnet"
+       ]
+     },
+     {
+       "type": "indicator",
+       "spec_version": "2.1",
+       "id": "indicator--dns-spf-dkim-facebookmail--uuid",
+       "created_by_ref": "identity--uuid",
+       "created": "2024-03-02T16:27:01Z",
+       "modified": "2024-03-02T16:27:01Z",
+       "name": "Suspicious Email Origin: facebookmail",
+       "description": "Indicates the suspicious origin of an email from 'facebookmail', suggesting potential phishing activity. DNS SPF and DKIM records suggest the email is fraudulent.",
+       "labels": [
+         "email-spoofing",
+         "threat-intelligence"
+       ],
+       "pattern": "[email-message:from_ref.value = 'facebookmail']"
+     },
+     {
+       "type": "indicator",
+       "spec_version": "2.1",
+       "id": "indicator--firefox-plugin--uuid",
+       "created_by_ref": "identity--uuid",
+       "created": "2024-03-02T16:27:01Z",
+       "modified": "2024-03-02T16:27:01Z",
+       "name": "Potential Exploited Firefox Plugin: Java(TM) Plug-in 1.7.0_04",
+       "description": "Indicates the potential exploitation of the Java(TM) Plug-in 1.7.0_04 Firefox plugin, which is associated with CVE-2012-1723.",
+       "labels": [
+         "exploited-plugin",
+         "threat-intelligence"
+       ],
+       "pattern": "[file:hashes.'SHA-256' = 'CVE-2012-1723']"
+     },
+     {
+       "type": "relationship",
+       "spec_version": "2.1",
+       "id": "relationship--email-to-plugin",
+       "created_by_ref": "identity--uuid",
+       "created": "2024-03-02T16:27:01Z",
+       "modified": "2024-03-02T16:27:01Z",
+       "relationship_type": "indicates",
+       "source_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
+       "target_ref": "indicator--firefox-plugin--uuid"
+     },
+     {
+       "type": "malware",
+       "spec_version": "2.1",
+       "id": "malware--b34st-rootkit--uuid",
+       "created_by_ref": "identity--uuid",
+       "created": "2024-03-02T16:27:01Z",
+       "modified": "2024-03-02T16:27:01Z",
+       "name": "B34ST Rookit V1",
+       "description": "Rootkit malware installed via the exploited Firefox Java plugin vulnerability.",
+       "labels": [
+         "rootkit",
+         "malware"
+       ],
+       "malware_types": [
+         "rootkit"
+       ]
+     },
+     {
+       "type": "relationship",
+       "spec_version": "2.1",
+       "id": "relationship--plugin-to-rootkit",
+       "created_by_ref": "identity--uuid",
+       "created": "2024-03-02T16:27:01Z",
+       "modified": "2024-03-02T16:27:01Z",
+       "relationship_type": "uses",
+       "source_ref": "indicator--firefox-plugin--uuid",
+       "target_ref": "malware--b34st-rootkit--uuid"
+     },
+     {
+       "type": "relationship",
+       "spec_version": "2.1",
+       "id": "relationship--rootkit-to-botnet",
+       "created_by_ref": "identity--uuid",
+       "created": "2024-03-02T16:27:01Z",
+       "modified": "2024-03-02T16:27:01Z",
+       "relationship_type": "uses",
+       "source_ref": "malware--b34st-rootkit--uuid",
+       "target_ref": "infrastructure--botnet--uuid"
+     }
   ]
-}
+ }
+ 
