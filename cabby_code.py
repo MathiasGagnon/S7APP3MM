@@ -33,3 +33,19 @@ client.push(stix_data, binding,
             uri='/services/inbox-a') # Adjust the inbox service URI as per your server configuration
 
 print("Successfully exported to TAXII server.")
+
+# Now, query the collection to verify the data was added
+# Identify the POLL service
+poll_service = None
+for service in services:
+    if service.type == 'POLL':
+        poll_service = service
+        break
+
+if poll_service:
+    # Use the POLL service to query the collection where you've added your data
+    content_blocks = client.poll(collection_name='collection-a', uri=poll_service.address)
+    for block in content_blocks:
+        print("Content from collection-a:", block.content)
+else:
+    print("POLL service not found among discovered services.")
