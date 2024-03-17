@@ -156,24 +156,6 @@
       "description": "A malware botnet that connects to a command and control server for command execution and control.",
       "malware_types": ["botnet"]
      },
-     {
-      "type": "network-traffic",
-      "id": "network-traffic--uuid",
-      "created": "2024-03-02T16:27:01Z",
-      "modified": "2024-03-02T16:27:01Z",
-      "description": "Network traffic associated with the malware botnet connecting to its command and control server.",
-      "protocols": ["tcp"],
-      "dst_port": 6565,
-      "dst_ref": "ipv4-addr--83.192.53.201",
-      "extensions": {
-         "network-traffic-ext": {
-           "dst_socket_address": {
-             "address_value": "83.192.53.201",
-             "port_value": 6565
-           }
-         }
-      }
-     },
     {
       "type": "indicator",
       "spec_version": "2.1",
@@ -189,7 +171,7 @@
 
     {
       "type": "infrastructure",
-      "name": "Herder",
+      "name": "C&C server",
       "id": "infrastructure--herder--uuid",
       "description": "ICMP Server controlling Botnet zombie"
     },
@@ -220,7 +202,7 @@
       "created_by_ref": "identity--uuid",
       "created": "2024-03-02T16:27:01Z",
       "modified": "2024-03-02T16:27:01Z",
-      "relationship_type": "Control",
+      "relationship_type": "Controls",
       "source_ref": "infrastructure--herder--uuid",
       "target_ref": "infrastructure--botnet--uuid"
     },
@@ -341,16 +323,6 @@
       "modified": "2020-02-29T18:18:08.661Z",
       "relationship_type": "uses",
       "source_ref": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
-      "target_ref": "infrastructure--herder--uuid"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--student-herder",
-      "created": "2020-02-29T18:18:08.661Z",
-      "modified": "2020-02-29T18:18:08.661Z",
-      "relationship_type": "Brute Force SSH root:12345/Gain access",
-      "source_ref": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a922",
       "target_ref": "infrastructure--herder--uuid"
     }
   ]
