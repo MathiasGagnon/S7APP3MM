@@ -19,7 +19,7 @@
       "id": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a921",
       "created": "2024-03-12T00:00:00Z",
       "modified": "2024-03-12T00:00:00Z",
-      "name": "Inconnu",
+      "name": "Hacker - Anna@192.168.66.17",
       "identity_class": "individu",
       "sectors": ["Individus"],
       "roles": ["pirate informatique", "acteur de menace"],
@@ -108,23 +108,25 @@
       "name": "Origine suspecte de l'e-mail : facebookmail",
       "description": "Indique l'origine suspecte d'un e-mail provenant de 'facebookmail', suggérant une activité de phishing potentielle. L'e-mail passe les vérifications SPF, DKIM et DMARC, indiquant qu'il est authentifié mais qu'il provient d'un domaine connu pour être suspect. Les informations DNS de l'adresse IP de l'expéditeur montrent un TTL court, suggérant l'utilisation d'un DNS à flux rapide, et le domaine de l'expéditeur est associé à ns-mty.axtel.net et soporteip.extel.com.mx, ce qui est suspect du point de vue de Facebook.",
 
-
-      "labels": ["usurpation d'adresse e-mail", "renseignement sur les menaces"],
+      "labels": [
+        "usurpation d'adresse e-mail",
+        "renseignement sur les menaces"
+      ],
       "pattern": "[email-message:from_ref.value = 'facebookmail']",
       "external_references": [
-         {
-           "source_name": "Analyse DNS",
-           "url": "https://github.com/MathiasGagnon/S7APP3MM/blob/main/DigIPEnvoyeur.PNG",
-           "description": "Détails sur l'analyse DNS de l'adresse IP de l'expéditeur (200.52.42.53), montrant un TTL court indiquant un DNS à flux rapide et une association avec des domaines suspects (axtel)."
-         },
-         {
-           "source_name": "Analyse SPF, DKIM, DMARC",
-           "url": "https://github.com/MathiasGagnon/S7APP3MM/blob/main/emailHeader.txt",
-           "description": "Analyse des entrées SPF, DKIM et DMARC pour l'e-mail, indiquant des vérifications d'authentification réussies."
-         }
+        {
+          "source_name": "Analyse DNS",
+          "url": "https://github.com/MathiasGagnon/S7APP3MM/blob/main/DigIPEnvoyeur.PNG",
+          "description": "Détails sur l'analyse DNS de l'adresse IP de l'expéditeur (200.52.42.53), montrant un TTL court indiquant un DNS à flux rapide et une association avec des domaines suspects (axtel)."
+        },
+        {
+          "source_name": "Analyse SPF, DKIM, DMARC",
+          "url": "https://github.com/MathiasGagnon/S7APP3MM/blob/main/emailHeader.txt",
+          "description": "Analyse des entrées SPF, DKIM et DMARC pour l'e-mail, indiquant des vérifications d'authentification réussies."
+        }
       ]
-     },
-     
+    },
+
     {
       "type": "indicator",
       "spec_version": "2.1",
@@ -157,7 +159,7 @@
       "name": "Botnet Malveillant",
       "description": "Un botnet de logiciels malveillants qui se connecte à un serveur de commande et de contrôle pour l'exécution et le contrôle des commandes.",
       "malware_types": ["botnet"]
-     },
+    },
     {
       "type": "indicator",
       "spec_version": "2.1",
@@ -186,8 +188,8 @@
       "source_ref": "infrastructure--botnet--uuid",
       "target_ref": "network-traffic--uuid",
       "description": "Le botnet de logiciels malveillants utilise le trafic réseau spécifié pour se connecter à son serveur de commande et de contrôle."
-     },
-     {
+    },
+    {
       "type": "relationship",
       "id": "relationship--uuid--botnet--email",
       "created": "2024-03-02T16:27:01Z",
@@ -196,7 +198,7 @@
       "source_ref": "infrastructure--botnet--uuid",
       "target_ref": "indicator--dns-spf-dkim-facebookmail--uuid",
       "description": "Le botnet de logiciels malveillants envoie des e-mails malveillants pour étendre davantage le botnet."
-     },
+    },
     {
       "type": "relationship",
       "id": "relationship--botnet-to-herder",
