@@ -10,7 +10,7 @@
       "created_by_ref": "identity--uuid",
       "created": "2024-03-02T16:27:01Z",
       "modified": "2024-03-02T16:27:01Z",
-      "name": "Phishing Attack Analysis: Suspicious Email from Facebookmail",
+      "name": "Suspicious Email from Facebookmail",
       "description": "Analysis of a spear phishing attack targeting Facebook users. The attack involves suspicious email activity originating from the domain 'facebookmail'. The email contained links possibly leading to a malicious website exploiting CVE-2012-1723.",
       "labels": ["phishing", "threat-intelligence"]
     },
