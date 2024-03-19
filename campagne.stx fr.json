@@ -19,13 +19,12 @@
       "id": "identity--3e1a8999-10b5-42d1-aabc-3c9922f4a921",
       "created": "2024-03-12T00:00:00Z",
       "modified": "2024-03-12T00:00:00Z",
-      "name": "Hacker - Anna@192.168.66.17",
+      "name": "Anna@192.168.66.17",
       "identity_class": "individu",
       "sectors": ["Individus"],
       "roles": ["pirate informatique", "acteur de menace"],
-      "goals": ["Vol de données", "Perturbation des services"],
-      "aliases": ["MalActA", "EvilHacker123"],
-      "description": "Individu inconnu connu pour des opérations de phishing et de botnet",
+      "aliases": ["MalActCondor"],
+      "description": "Individu connu pour des opérations de phishing et de botnet",
       "external_references": [
         {
           "source_name": "MITRE",
@@ -74,10 +73,9 @@
       "id": "threat-actor--0f1b2e8d-70b8-4828-ae63-c6dbf9e8bfb8",
       "created": "2024-03-12T00:00:00Z",
       "modified": "2024-03-12T00:00:00Z",
-      "name": "Acteur Malveillant A",
+      "name": "Acteur Malveillant 'Condor'",
       "labels": ["acteur malveillant"],
-      "description": "L'acteur malveillant A est connu pour la réalisation de pourriels par courriel et de phishing afin de créer des machines zombies pour un botnet.",
-      "goals": ["Vol de données", "Perturbation des services"],
+      "description": "L'acteur malveillant 'Condor' est connu pour la réalisation de pourriels par courriel et de phishing afin de créer des machines zombies pour un botnet.",
       "threat_actor_types": ["pirate informatique", "criminel"],
       "first_seen": "À compléter",
       "last_seen": "À compléter"
@@ -177,7 +175,7 @@
       "type": "infrastructure",
       "name": "Serveur C&C",
       "id": "infrastructure--herder--uuid",
-      "description": "Serveur ICMP contrôlant les zombies du botnet"
+      "description": "Serveur ICMP contrôlant les zombies du botnet à l'adresse 83.192.53.201"
     },
     {
       "type": "relationship",
